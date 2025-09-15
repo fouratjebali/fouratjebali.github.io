@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+$primary-color: #384966;
+$secondary-color: #64748b;
+$background-color: #fff;
+$text-color: #334155;
+$hover-color: #2563eb;
+$shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+$transition: all 0.3s ease;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: $background-color;
+  box-shadow: $shadow;
+  padding: 0.8rem 2rem;
+  font-family: 'Poppins', sans-serif;
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: $primary-color;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+
+      .logo-icon {
+        font-size: 2.2rem;
+        margin-right: 0.5rem;
+        color: $primary-color;
+      }
+
+      .logo-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.1;
+
+        span {
+          font-size: 1.1em;
+        }
+
+        p {
+          margin: 0;
+          font-weight: 400;
+          font-size: 0.9rem;
+          color: $secondary-color;
+        }
+      }
+    }
+  }
+
+  .nav-container {
+    @media (max-width: 900px) {
+      display: none;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+
+      .nav-item {
+        position: relative;
+
+        .nav-link {
+          text-decoration: none;
+          color: $secondary-color;
+          font-weight: 500;
+          font-size: 1.05rem;
+          padding: 0.5rem 0;
+          transition: $transition;
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+          cursor: pointer;
+
+          &:hover {
+            color: $primary-color;
+          }
+
+          &.active {
+            color: $primary-color;
+          }
+
+          .icon {
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+
+    @media (max-width: 600px) {
+      gap: 0.8rem;
+    }
+
+    .btn-icon {
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $secondary-color;
+      transition: $transition;
+      position: relative;
+
+      &:hover {
+        background-color: #f1f5f9;
+        color: $primary-color;
+      }
+
+      
+    }
+
+    .user-profile {
+      margin-left: 0.5rem;
+
+      .profile-image {
+        width: 2.8rem;
+        height: 2.8rem;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #e2e8f0;
+        transition: $transition;
+        cursor: pointer;
+
+        &:hover {
+          border-color: $primary-color;
+        }
+      }
+    }
+  }
+
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: $secondary-color;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: $transition;
+
+    &:hover {
+      color: $primary-color;
+      background-color: #f1f5f9;
+    }
+
+    @media (max-width: 900px) {
+      display: block;
+    }
+  }
+
+  .mobile-menu {
+    display: none;
+    background: $background-color;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    box-shadow: $shadow;
+    padding: 1rem 0;
+    transform: translateY(-10px);
+    opacity: 0;
+    visibility: hidden;
+    transition: $transition;
+
+    &.active {
+      display: block;
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-nav-menu {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      .nav-item {
+        .nav-link {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          padding: 1rem 2rem;
+          text-decoration: none;
+          color: $secondary-color;
+          font-weight: 500;
+          transition: $transition;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #f1f5f9;
+            color: $primary-color;
+          }
+
+          &.active {
+            color: $primary-color;
+            background-color: #eff6ff;
+          }
+
+          .icon {
+            width: 1.5rem;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}

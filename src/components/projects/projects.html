@@ -1,0 +1,63 @@
+<section class="projects-section">
+    <div class="container">
+      <h2 class="section-title">My Projects</h2>
+      <p class="section-subtitle">A collection of my work from GitHub</p>
+      
+      <div class="loading-spinner" *ngIf="isLoading">
+        <i class="fas fa-spinner fa-spin"></i>
+        <p>Loading projects from GitHub...</p>
+      </div>
+      
+      <div class="error-message" *ngIf="error && !isLoading">
+        <i class="fas fa-exclamation-circle"></i>
+        <p>{{ error }}</p>
+        <button class="retry-btn" (click)="fetchGitHubProjects()">
+          <i class="fas fa-redo"></i> Try Again
+        </button>
+      </div>
+      
+      <div class="projects-grid" *ngIf="!isLoading && !error">
+        <div class="project-card" *ngFor="let project of projects">
+          <div class="card-header">
+            <div class="project-title">
+              <i class="fab fa-github"></i>
+              <h3>{{ project.name }}</h3>
+            </div>
+            <span class="updated-date">Updated {{ formatDate(project.updated_at) }}</span>
+          </div>
+          
+          <p class="project-description">{{ project.description || 'No description available' }}</p>
+          
+          <div class="project-stats">
+            <div class="stat">
+              <i class="fas fa-star"></i>
+              <span>{{ project.stargazers_count }}</span>
+            </div>
+            <div class="stat">
+              <i class="fas fa-code-branch"></i>
+              <span>{{ project.forks_count }}</span>
+            </div>
+            <div class="stat">
+              <i class="fas fa-circle"></i>
+              <span>{{ project.language || 'N/A' }}</span>
+            </div>
+          </div>
+          
+          <div class="project-links">
+            <a [href]="project.html_url" target="_blank" class="project-link">
+              <i class="fas fa-external-link-alt"></i> View Repository
+            </a>
+            <a *ngIf="project.homepage" [href]="project.homepage" target="_blank" class="project-link demo-link">
+              <i class="fas fa-play-circle"></i> Live Demo
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="view-more" *ngIf="!isLoading && !error">
+        <a [href]="'https://github.com/' + githubUsername" target="_blank" class="view-more-btn">
+          View All Projects on GitHub <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>

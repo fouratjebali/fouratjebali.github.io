@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+// Variables
+$primary-color: #3b82f6;
+$secondary-color: #64748b;
+$background-color: #fff;
+$text-color: #334155;
+$light-gray: #f8fafc;
+$border-color: #e2e8f0;
+$shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+$transition: all 0.3s ease;
+
+.experience-section {
+  padding: 5rem 2rem;
+  background: $light-gray;
+  font-family: 'Poppins', sans-serif;
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+    color: $text-color;
+    margin-bottom: 0.5rem;
+    
+    @media (max-width: 600px) {
+      font-size: 1.8rem;
+    }
+  }
+  
+  .section-subtitle {
+    text-align: center;
+    color: $secondary-color;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+  }
+  
+  .experiences-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 2rem;
+    
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .experience-card {
+    background: $background-color;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: $shadow;
+    transition: $transition;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid $border-color;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      
+      @media (max-width: 480px) {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .company-info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        
+        .company-logo {
+          width: 60px;
+          height: 60px;
+          border-radius: 12px;
+          background: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+          
+          .logo-img {
+            width: 80%;
+            height: auto;
+            object-fit: contain;
+          }
+        }
+        
+        .company-details {
+          .company-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: $text-color;
+            margin-bottom: 0.25rem;
+          }
+          
+          .position {
+            color: $primary-color;
+            font-weight: 500;
+            margin: 0;
+          }
+        }
+      }
+      
+      .date-range {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: $secondary-color;
+        font-weight: 500;
+        background: lighten($primary-color, 42%);
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        
+        i {
+          color: $primary-color;
+        }
+      }
+    }
+    
+    .card-content {
+      padding: 1.5rem;
+      
+      .tasks-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: $text-color;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px dashed $border-color;
+      }
+      
+      .tasks-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        
+        .task-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 0.75rem;
+          margin-bottom: 0.75rem;
+          
+          &:last-child {
+            margin-bottom: 0;
+          }
+          
+          i {
+            color: $primary-color;
+            margin-top: 0.25rem;
+            flex-shrink: 0;
+          }
+          
+          span {
+            line-height: 1.6;
+            color: $secondary-color;
+          }
+        }
+      }
+    }
+    
+    .card-footer {
+      padding: 1rem 1.5rem;
+      background: lighten($light-gray, 2%);
+      border-top: 1px solid $border-color;
+      
+      .technologies {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        
+        .tech-tag {
+          padding: 0.4rem 0.8rem;
+          background: lighten($primary-color, 42%);
+          color: $primary-color;
+          border-radius: 50px;
+          font-size: 0.85rem;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}

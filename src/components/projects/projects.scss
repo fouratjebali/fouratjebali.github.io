@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+$primary-color: #3b82f6;
+$secondary-color: #64748b;
+$background-color: #fff;
+$text-color: #334155;
+$light-gray: #f8fafc;
+$border-color: #e2e8f0;
+$shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+$transition: all 0.3s ease;
+
+.projects-section {
+  padding: 5rem 2rem;
+  background: $light-gray;
+  font-family: 'Poppins', sans-serif;
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    
+  }
+  
+  .section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+    color: $text-color;
+    margin-bottom: 0.5rem;
+    
+    @media (max-width: 600px) {
+      font-size: 1.8rem;
+    }
+  }
+  
+  .section-subtitle {
+    text-align: center;
+    color: $secondary-color;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+  }
+  
+  .loading-spinner {
+    text-align: center;
+    padding: 3rem;
+    color: $secondary-color;
+    
+    i {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+      color: $primary-color;
+    }
+  }
+  
+  .error-message {
+    text-align: center;
+    padding: 3rem;
+    color: #ef4444;
+    
+    i {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    
+    .retry-btn {
+      margin-top: 1rem;
+      padding: 0.5rem 1.5rem;
+      background: $primary-color;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      transition: $transition;
+      
+      &:hover {
+        background: darken($primary-color, 10%);
+      }
+    }
+  }
+  
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 5rem;
+    margin-bottom: 5rem;
+    
+    @media (max-width: 400px) {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .project-card {
+    background: $background-color;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: $shadow;
+    transition: $transition;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      
+      @media (max-width: 480px) {
+        flex-direction: column;
+      }
+      
+      .project-title {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        
+        i {
+          color: $primary-color;
+          font-size: 1.5rem;
+        }
+        
+        h3 {
+          font-size: 1.3rem;
+          font-weight: 600;
+          color: $text-color;
+          margin: 0;
+          text-transform: capitalize;
+        }
+      }
+      
+      .updated-date {
+        font-size: 0.85rem;
+        color: $secondary-color;
+        white-space: nowrap;
+        
+        @media (max-width: 480px) {
+          margin-top: 0.5rem;
+        }
+      }
+    }
+    
+    .project-description {
+      color: $secondary-color;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+    
+    .project-stats {
+      display: flex;
+      gap: 1.2rem;
+      margin-bottom: 1.5rem;
+      
+      .stat {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.9rem;
+        color: $secondary-color;
+        
+        i {
+          &.fa-star {
+            color: #f59e0b;
+          }
+          
+          &.fa-code-branch {
+            color: $primary-color;
+          }
+          
+          &.fa-circle {
+            color: #10b981;
+          }
+        }
+      }
+    }
+    
+    .project-links {
+      display: flex;
+      gap: 1rem;
+      
+      .project-link {
+        padding: 0.5rem 1rem;
+        background: lighten($primary-color, 42%);
+        color: $primary-color;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: $transition;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        
+        &:hover {
+          background: $primary-color;
+          color: white;
+        }
+        
+        &.demo-link {
+          background: lighten(#10b981, 50%);
+          color: #10b981;
+          
+          &:hover {
+            background: #10b981;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+  
+  .view-more {
+    text-align: center;
+    margin-top: 2rem; 
+    
+    .view-more-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.8rem;
+      background: $primary-color;
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: $transition;
+      
+      &:hover {
+        background: darken($primary-color, 10%);
+        transform: translateY(-2px);
+      }
+    }
+  }
+}

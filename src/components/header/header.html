@@ -1,0 +1,78 @@
+<header class="header">
+  <div class="header-container">
+    <div class="logo-container">
+      <div class="logo">
+        <div class="logo-text">
+          <span>Fourat Jebali</span>
+          <p>Software Engineering Student</p>
+        </div>
+      </div>
+    </div>
+
+    <nav class="nav-container">
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a class="nav-link" (click)="scrollTo('about')" routerLinkActive="active">
+            <span>About</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="scrollTo('experience')" routerLinkActive="active">
+            <span>Experience</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="scrollTo('projects')" routerLinkActive="active">
+            <span>Projects</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="scrollTo('contact')" routerLinkActive="active">
+            <span>Contact</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <button class="btn-icon" aria-label="Search">
+        <i class="fas fa-search"></i>
+      </button>
+      <div class="user-profile">
+        <img src="gallery.png" 
+             alt="User profile" class="profile-image">
+      </div>
+    </div>
+
+    <button class="mobile-menu-btn" (click)="toggleMobileMenu()">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+
+  <!-- Mobile menu (initially hidden) -->
+  <div class="mobile-menu" [class.active]="isMobileMenuOpen">
+    <ul class="mobile-nav-menu">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/about" routerLinkActive="active" (click)="toggleMobileMenu()">
+          <span>About</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/experience" routerLinkActive="active" (click)="toggleMobileMenu()">
+          <span>Experience</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/projects" routerLinkActive="active" (click)="toggleMobileMenu()">
+          <i class="icon fas fa-briefcase"></i>
+          <span>Projects</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/contact" routerLinkActive="active" (click)="toggleMobileMenu()">
+          <span>Contact</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
