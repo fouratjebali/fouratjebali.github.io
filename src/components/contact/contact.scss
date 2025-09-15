@@ -146,6 +146,7 @@ $transition: all 0.3s ease;
         grid-template-columns: 1fr 1fr;
         gap: 1rem;
         
+        
         @media (max-width: 600px) {
           grid-template-columns: 1fr;
         }
@@ -153,6 +154,7 @@ $transition: all 0.3s ease;
       
       .form-group {
         margin-bottom: 1.5rem;
+        padding-right: 2rem;
         
         label {
           display: block;

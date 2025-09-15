@@ -1,16 +1,17 @@
 import { Component, HostListener } from '@angular/core';
-import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLinkActive],
   templateUrl: './header.html',
   styleUrl: './header.scss'
 })
 export class Header {
   isMobileMenuOpen = false;
   private readonly headerOffsetPx = 72;
+  isProfileSpinning = false;
 
   constructor(private router: Router) {}
 
@@ -18,7 +19,6 @@ export class Header {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
   }
 
-  // Close mobile menu when clicking outside
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent): void {
     const target = event.target as HTMLElement;
@@ -27,7 +27,6 @@ export class Header {
     }
   }
 
-  // Close mobile menu on escape key
   @HostListener('document:keydown.escape')
   onEscapeKey(): void {
     this.isMobileMenuOpen = false;
@@ -47,7 +46,7 @@ export class Header {
     };
 
     if (this.router.url !== '/') {
-      this.router.navigateByUrl('/').then(() => tryScroll(20)); // wait up to ~1s for DOM
+      this.router.navigateByUrl('/').then(() => tryScroll(20)); 
     } else {
       tryScroll(1);
     }
@@ -70,5 +69,55 @@ export class Header {
     };
 
     requestAnimationFrame(step);
+  }
+
+  onProfileClick(): void {
+    if (this.isProfileSpinning) return;
+    
+    this.isProfileSpinning = true;
+    
+    this.createParticleEffect();
+    
+    setTimeout(() => {
+      this.isProfileSpinning = false;
+    }, 1200);
+  }
+
+  private createParticleEffect(): void {
+    const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3'];
+    const particleCount = 12;
+    
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.style.position = 'fixed';
+      particle.style.width = '8px';
+      particle.style.height = '8px';
+      particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      particle.style.borderRadius = '50%';
+      particle.style.pointerEvents = 'none';
+      particle.style.zIndex = '9999';
+      
+      const profileImg = document.querySelector('.profile-image') as HTMLElement;
+      const rect = profileImg.getBoundingClientRect();
+      particle.style.left = (rect.left + rect.width / 2) + 'px';
+      particle.style.top = (rect.top + rect.height / 2) + 'px';
+      
+      document.body.appendChild(particle);
+      
+      const angle = (i / particleCount) * Math.PI * 2;
+      const distance = 100 + Math.random() * 50;
+      const endX = Math.cos(angle) * distance;
+      const endY = Math.sin(angle) * distance;
+      
+      particle.animate([
+        { transform: 'translate(0, 0) scale(1)', opacity: 1 },
+        { transform: `translate(${endX}px, ${endY}px) scale(0)`, opacity: 0 }
+      ], {
+        duration: 800,
+        easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+      }).onfinish = () => {
+        document.body.removeChild(particle);
+      };
+    }
   }
 }

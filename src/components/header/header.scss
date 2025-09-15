@@ -40,6 +40,11 @@ $transition: all 0.3s ease;
       align-items: center;
       text-decoration: none;
 
+      @media (max-width: 600px) {
+        font-weight: 600;
+        font-size: 1.2rem;
+      }
+
       .logo-icon {
         font-size: 2.2rem;
         margin-right: 0.5rem;
@@ -151,6 +156,11 @@ $transition: all 0.3s ease;
 
         &:hover {
           border-color: $primary-color;
+          transform: scale(1.05);
+        }
+
+        &.spinning {
+          animation: spinAndBounce 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
       }
     }
@@ -233,5 +243,26 @@ $transition: all 0.3s ease;
         }
       }
     }
+  }
+}
+
+@keyframes spinAndBounce {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  20% {
+    transform: rotate(72deg) scale(1.15);
+  }
+  40% {
+    transform: rotate(144deg) scale(0.9);
+  }
+  60% {
+    transform: rotate(216deg) scale(1.1);
+  }
+  80% {
+    transform: rotate(288deg) scale(0.95);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
   }
 }

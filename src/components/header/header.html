@@ -35,12 +35,12 @@
     </nav>
 
     <div class="header-actions">
-      <button class="btn-icon" aria-label="Search">
-        <i class="fas fa-search"></i>
-      </button>
       <div class="user-profile">
         <img src="gallery.png" 
-             alt="User profile" class="profile-image">
+             alt="User profile" 
+             class="profile-image"
+             [class.spinning]="isProfileSpinning"
+             (click)="onProfileClick()">
       </div>
     </div>
 
@@ -53,23 +53,22 @@
   <div class="mobile-menu" [class.active]="isMobileMenuOpen">
     <ul class="mobile-nav-menu">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/about" routerLinkActive="active" (click)="toggleMobileMenu()">
+        <a class="nav-link" routerLinkActive="active" (click)="scrollTo('about'); toggleMobileMenu()">
           <span>About</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/experience" routerLinkActive="active" (click)="toggleMobileMenu()">
+        <a class="nav-link" routerLinkActive="active" (click)="scrollTo('experience'); toggleMobileMenu()">
           <span>Experience</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/projects" routerLinkActive="active" (click)="toggleMobileMenu()">
-          <i class="icon fas fa-briefcase"></i>
+        <a class="nav-link" routerLinkActive="active" (click)="scrollTo('projects'); toggleMobileMenu()">
           <span>Projects</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/contact" routerLinkActive="active" (click)="toggleMobileMenu()">
+        <a class="nav-link" routerLinkActive="active" (click)="scrollTo('contact'); toggleMobileMenu()">
           <span>Contact</span>
         </a>
       </li>
