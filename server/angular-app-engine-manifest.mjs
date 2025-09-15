@@ -1,6 +1,6 @@
 
 export default {
-  basePath: 'https://fouratjebali.github.io/fouratjebali.github.io',
+  basePath: '/',
   supportedLocales: {
   "en-US": ""
 },

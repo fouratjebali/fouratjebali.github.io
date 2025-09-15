@@ -1,9 +1,9 @@
 {
   "routes": {
-    "/fouratjebali.github.io": {},
-    "/fouratjebali.github.io/about": {},
-    "/fouratjebali.github.io/contact": {},
-    "/fouratjebali.github.io/experience": {},
-    "/fouratjebali.github.io/projects": {}
+    "/": {},
+    "/about": {},
+    "/contact": {},
+    "/experience": {},
+    "/projects": {}
   }
 }
