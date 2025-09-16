@@ -12,7 +12,7 @@ $transition: all 0.3s ease;
 
 .experience-section {
   padding: 5rem 2rem;
-  background: $light-gray;
+  background: var(--section-bg);
   font-family: 'Poppins', sans-serif;
   
   .container {
@@ -24,7 +24,7 @@ $transition: all 0.3s ease;
     font-size: 2.2rem;
     font-weight: 700;
     text-align: center;
-    color: $text-color;
+    color: var(--primary);
     margin-bottom: 0.5rem;
     
     @media (max-width: 600px) {
@@ -34,7 +34,7 @@ $transition: all 0.3s ease;
   
   .section-subtitle {
     text-align: center;
-    color: $secondary-color;
+    color: var(--text-muted);
     margin-bottom: 3rem;
     font-size: 1.1rem;
   }
@@ -50,11 +50,11 @@ $transition: all 0.3s ease;
   }
   
   .experience-card {
-    background: $background-color;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: $shadow;
     transition: $transition;
+    background: var(--surface);
+    box-shadow: var(--shadow);
     
     &:hover {
       transform: translateY(-5px);
@@ -101,7 +101,7 @@ $transition: all 0.3s ease;
           .company-name {
             font-size: 1.4rem;
             font-weight: 600;
-            color: $text-color;
+            color: var(--text);
             margin-bottom: 0.25rem;
           }
           
@@ -117,9 +117,9 @@ $transition: all 0.3s ease;
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        color: $secondary-color;
+        color: var(--text);
         font-weight: 500;
-        background: lighten($primary-color, 42%);
+        background: var(--surface);
         padding: 0.5rem 1rem;
         border-radius: 50px;
         
@@ -135,10 +135,9 @@ $transition: all 0.3s ease;
       .tasks-title {
         font-size: 1.1rem;
         font-weight: 600;
-        color: $text-color;
+        color: var(--text);
         margin-bottom: 1rem;
         padding-bottom: 0.5rem;
-        border-bottom: 1px dashed $border-color;
       }
       
       .tasks-list {
@@ -164,7 +163,7 @@ $transition: all 0.3s ease;
           
           span {
             line-height: 1.6;
-            color: $secondary-color;
+            color: var(--text-muted);
           }
         }
       }
@@ -172,7 +171,7 @@ $transition: all 0.3s ease;
     
     .card-footer {
       padding: 1rem 1.5rem;
-      background: lighten($light-gray, 2%);
+      background: var(--surface);
       border-top: 1px solid $border-color;
       
       .technologies {
@@ -182,7 +181,7 @@ $transition: all 0.3s ease;
         
         .tech-tag {
           padding: 0.4rem 0.8rem;
-          background: lighten($primary-color, 42%);
+          background: var(--surface);
           color: $primary-color;
           border-radius: 50px;
           font-size: 0.85rem;

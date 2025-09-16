@@ -1,5 +1,7 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { Router, RouterLinkActive } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
+import { PLATFORM_ID } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -11,9 +13,72 @@ import { Router, RouterLinkActive } from '@angular/router';
 export class Header {
   isMobileMenuOpen = false;
   private readonly headerOffsetPx = 72;
-  isProfileSpinning = false;
 
-  constructor(private router: Router) {}
+  private readonly platformId = inject(PLATFORM_ID);
+  private readonly isBrowser = isPlatformBrowser(this.platformId);
+
+  constructor(private router: Router) {
+    if (this.isBrowser) {
+      this.initializeThemeFromStorage();
+    }
+  }
+
+  private initializeThemeFromStorage(): void {
+    try {
+      const stored = typeof localStorage !== 'undefined' ? localStorage.getItem('preferred-theme') : null;
+      if (stored === 'dark') {
+        document.body.classList.add('dark-theme');
+      } else if (stored === 'light') {
+        document.body.classList.remove('dark-theme');
+      }
+    } catch {
+    }
+  }
+
+  private toggleTheme(): void {
+    if (!this.isBrowser) return;
+    const willEnableDark = !document.body.classList.contains('dark-theme');
+    document.body.classList.toggle('dark-theme', willEnableDark);
+    try {
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('preferred-theme', willEnableDark ? 'dark' : 'light');
+      }
+    } catch {
+    }
+  }
+
+  private createRippleOnProfile(): void {
+    if (!this.isBrowser) return;
+    const profileImg = document.querySelector('.profile-image') as HTMLElement | null;
+    if (!profileImg) return;
+
+    const container = profileImg.parentElement as HTMLElement;
+    if (!container) return;
+
+    if (!container.style.position) {
+      container.style.position = 'relative';
+    }
+
+    const ripple = document.createElement('span');
+    ripple.className = 'profile-ripple';
+
+    const rect = profileImg.getBoundingClientRect();
+    const maxDim = Math.max(rect.width, rect.height);
+    const size = maxDim * 2.2;
+
+    ripple.style.width = `${size}px`;
+    ripple.style.height = `${size}px`;
+    ripple.style.left = `${rect.width / 2}px`;
+    ripple.style.top = `${rect.height / 2}px`;
+
+    container.appendChild(ripple);
+
+    ripple.addEventListener('animationend', () => {
+      if (ripple.parentElement) {
+        ripple.parentElement.removeChild(ripple);
+      }
+    });
+  }
 
   toggleMobileMenu(): void {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
@@ -72,52 +137,7 @@ export class Header {
   }
 
   onProfileClick(): void {
-    if (this.isProfileSpinning) return;
-    
-    this.isProfileSpinning = true;
-    
-    this.createParticleEffect();
-    
-    setTimeout(() => {
-      this.isProfileSpinning = false;
-    }, 1200);
-  }
-
-  private createParticleEffect(): void {
-    const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3'];
-    const particleCount = 12;
-    
-    for (let i = 0; i < particleCount; i++) {
-      const particle = document.createElement('div');
-      particle.style.position = 'fixed';
-      particle.style.width = '8px';
-      particle.style.height = '8px';
-      particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-      particle.style.borderRadius = '50%';
-      particle.style.pointerEvents = 'none';
-      particle.style.zIndex = '9999';
-      
-      const profileImg = document.querySelector('.profile-image') as HTMLElement;
-      const rect = profileImg.getBoundingClientRect();
-      particle.style.left = (rect.left + rect.width / 2) + 'px';
-      particle.style.top = (rect.top + rect.height / 2) + 'px';
-      
-      document.body.appendChild(particle);
-      
-      const angle = (i / particleCount) * Math.PI * 2;
-      const distance = 100 + Math.random() * 50;
-      const endX = Math.cos(angle) * distance;
-      const endY = Math.sin(angle) * distance;
-      
-      particle.animate([
-        { transform: 'translate(0, 0) scale(1)', opacity: 1 },
-        { transform: `translate(${endX}px, ${endY}px) scale(0)`, opacity: 0 }
-      ], {
-        duration: 800,
-        easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-      }).onfinish = () => {
-        document.body.removeChild(particle);
-      };
-    }
+    this.createRippleOnProfile();
+    this.toggleTheme();
   }
 }

@@ -11,7 +11,7 @@ $transition: all 0.3s ease;
 
 .projects-section {
   padding: 5rem 2rem;
-  background: $light-gray;
+  background: var(--section-bg);
   font-family: 'Poppins', sans-serif;
   
   .container {
@@ -24,7 +24,7 @@ $transition: all 0.3s ease;
     font-size: 2.2rem;
     font-weight: 700;
     text-align: center;
-    color: $text-color;
+    color: var(--primary);
     margin-bottom: 0.5rem;
     
     @media (max-width: 600px) {
@@ -34,7 +34,7 @@ $transition: all 0.3s ease;
   
   .section-subtitle {
     text-align: center;
-    color: $secondary-color;
+    color: var(--text-muted);
     margin-bottom: 3rem;
     font-size: 1.1rem;
   }
@@ -66,7 +66,7 @@ $transition: all 0.3s ease;
     .retry-btn {
       margin-top: 1rem;
       padding: 0.5rem 1.5rem;
-      background: $primary-color;
+      background: var(--surface);
       color: white;
       border: none;
       border-radius: 4px;
@@ -92,7 +92,7 @@ $transition: all 0.3s ease;
   }
   
   .project-card {
-    background: $background-color;
+    background: var(--surface);
     border-radius: 12px;
     overflow: hidden;
     box-shadow: $shadow;
@@ -124,14 +124,14 @@ $transition: all 0.3s ease;
         gap: 0.5rem;
         
         i {
-          color: $primary-color;
+          color: var(--text);
           font-size: 1.5rem;
         }
         
         h3 {
           font-size: 1.3rem;
           font-weight: 600;
-          color: $text-color;
+          color: var(--text);
           margin: 0;
           text-transform: capitalize;
         }
@@ -139,7 +139,7 @@ $transition: all 0.3s ease;
       
       .updated-date {
         font-size: 0.85rem;
-        color: $secondary-color;
+        color: var(--text-muted);
         white-space: nowrap;
         
         @media (max-width: 480px) {
@@ -149,7 +149,7 @@ $transition: all 0.3s ease;
     }
     
     .project-description {
-      color: $secondary-color;
+      color: var(--text-muted);
       line-height: 1.6;
       margin-bottom: 1.5rem;
       flex-grow: 1;
@@ -189,8 +189,8 @@ $transition: all 0.3s ease;
       
       .project-link {
         padding: 0.5rem 1rem;
-        background: lighten($primary-color, 42%);
-        color: $primary-color;
+        background: var(--surface);
+        color: var(--primary);
         text-decoration: none;
         border-radius: 4px;
         font-size: 0.9rem;
