@@ -5,6 +5,8 @@ import { Projects } from '../components/projects/projects';
 import { Contact } from '../components/contact/contact';
 import { About } from '../components/about/about';
 import { Home } from '../components/home/home';
+import { Education } from '../components/education/education';
+
 import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
@@ -13,6 +15,7 @@ export const routes: Routes = [
     { path: 'experience', component: Experience },
     { path: 'projects', component: Projects },
     { path: 'contact', component: Contact },
+    { path: 'education', component: Education},
   ];
   @NgModule({
     imports: [RouterModule.forRoot(routes)],

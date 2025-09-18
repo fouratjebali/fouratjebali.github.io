@@ -11,6 +11,11 @@ import { PLATFORM_ID } from '@angular/core';
   styleUrl: './header.scss'
 })
 export class Header {
+  profileImages: string[] = [
+    'gallery2.png',
+    'gallery.png'
+  ];
+  currentImageIndex: number = 0;
   isMobileMenuOpen = false;
   private readonly headerOffsetPx = 72;
 
@@ -135,9 +140,13 @@ export class Header {
 
     requestAnimationFrame(step);
   }
+  get currentImage(): string {
+    return this.profileImages[this.currentImageIndex];
+  }
 
   onProfileClick(): void {
     this.createRippleOnProfile();
     this.toggleTheme();
+    this.currentImageIndex = (this.currentImageIndex + 1) % this.profileImages.length;
   }
 }

@@ -17,6 +17,11 @@
           </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" (click)="scrollTo('education')" routerLinkActive="active">
+            <span>Education</span>
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" (click)="scrollTo('experience')" routerLinkActive="active">
             <span>Experience</span>
           </a>
@@ -36,7 +41,7 @@
 
     <div class="header-actions">
       <div class="user-profile">
-        <img src="gallery.png" 
+        <img [src]="currentImage" 
              alt="User profile" 
              class="profile-image"
              (click)="onProfileClick()">
