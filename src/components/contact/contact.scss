@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
 @keyframes slideInUp {
   from {
     opacity: 0;
@@ -13,20 +11,16 @@
 
 .contact-section {
   padding: 6rem 2rem;
-  background: linear-gradient(135deg, var(--section-bg) 0%, rgba(8, 16, 32, 0.8) 100%);
-  font-family: 'Poppins', sans-serif;
+  background: var(--gradient-section);
+  font-family: var(--font-sans);
   position: relative;
   overflow: hidden;
 
   &::before {
     content: '';
     position: absolute;
-    bottom: -50%;
-    right: -50%;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(0, 212, 255, 0.08) 0%, transparent 70%);
-    border-radius: 50%;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 0%, var(--section-wash) 45%, transparent 100%);
     pointer-events: none;
   }
   
@@ -41,7 +35,7 @@
     font-size: 2.5rem;
     font-weight: 700;
     text-align: center;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    background: var(--gradient-brand);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -101,7 +95,9 @@
       .info-icon {
         width: 50px;
         height: 50px;
-        border-radius: 50%;
+        border-radius: var(--border-radius);
+        background: var(--primary-softer);
+        border: 1px solid var(--primary-border);
         color: var(--primary);
         display: flex;
         align-items: center;
@@ -137,7 +133,7 @@
         justify-content: center;
         width: 40px;
         height: 40px;
-        border-radius: 50%;
+        border-radius: var(--border-radius);
         background: var(--surface);
         color: var(--text);
         text-decoration: none;
@@ -145,7 +141,7 @@
         
         &:hover {
           background: var(--primary);
-          color: white;
+          color: var(--on-primary);
           transform: translateY(-3px);
         }
       }
@@ -154,9 +150,10 @@
   
   .contact-form-container {
     background: var(--surface);
-    border-radius: 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
     padding: 2rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-sm);
     
     .contact-form {
       .form-row {
@@ -172,7 +169,6 @@
       
       .form-group {
         margin-bottom: 1.5rem;
-        padding-right: 2rem;
         
         label {
           display: block;
@@ -185,23 +181,23 @@
         input, textarea {
           width: 100%;
           padding: 0.8rem 1rem;
-          border: 1px solid rgba(0, 212, 255, 0.2);
-          border-radius: 8px;
+          border: 1px solid var(--border);
+          border-radius: var(--border-radius);
           font-size: 1rem;
-          font-family: 'Poppins', sans-serif;
+          font-family: var(--font-sans);
           transition: all 0.3s ease;
-          background: rgba(0, 212, 255, 0.05);
+          background: var(--surface-soft);
           color: var(--text);
           
           &:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.15);
-            background: rgba(0, 212, 255, 0.08);
+            box-shadow: 0 0 0 3px var(--primary-soft);
+            background: var(--primary-softer);
           }
           
           &.invalid {
-            border-color: #ef4444;
+            border-color: var(--danger);
           }
           
           &::placeholder {
@@ -215,7 +211,7 @@
         }
         
         .error-message {
-          color: #ef4444;
+          color: var(--danger);
           font-size: 0.85rem;
           margin-top: 0.4rem;
         }
@@ -226,24 +222,24 @@
         align-items: center;
         gap: 0.6rem;
         padding: 1rem 2.5rem;
-        background: linear-gradient(135deg, var(--primary), var(--accent));
-        color: white;
+        background: var(--gradient-brand);
+        color: var(--on-primary);
         border: none;
-        border-radius: 10px;
+        border-radius: var(--border-radius);
         font-weight: 600;
         font-size: 1rem;
         cursor: pointer;
         transition: all 0.3s ease;
-        font-family: 'Poppins', sans-serif;
-        box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        font-family: var(--font-sans);
+        box-shadow: 0 10px 30px var(--glow-primary);
         
         &:hover:not(:disabled) {
           transform: translateY(-3px);
-          box-shadow: 0 15px 40px rgba(0, 212, 255, 0.3);
+          box-shadow: 0 15px 40px var(--glow-primary);
         }
         
         &:disabled {
-          background: rgba(0, 212, 255, 0.3);
+          background: var(--primary-border);
           cursor: not-allowed;
           box-shadow: none;
         }
@@ -256,15 +252,15 @@
         font-size: 0.95rem;
         
         &.success {
-          background: rgba(16, 185, 129, 0.1);
-          color: #10b981;
-          border: 1px solid rgba(16, 185, 129, 0.3);
+          background: var(--secondary-soft);
+          color: var(--success);
+          border: 1px solid var(--secondary);
         }
         
         &.error {
-          background: rgba(239, 68, 68, 0.1);
-          color: #fecaca;
-          border: 1px solid rgba(239, 68, 68, 0.3);
+          background: var(--danger-bg);
+          color: var(--danger);
+          border: 1px solid var(--danger-border);
         }
       }
     }

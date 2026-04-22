@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
 @keyframes cardSlideIn {
   from {
     opacity: 0;
@@ -13,20 +11,16 @@
 
 .experience-section {
   padding: 6rem 2rem;
-  background: linear-gradient(135deg, var(--section-bg) 0%, rgba(8, 16, 32, 0.8) 100%);
-  font-family: 'Poppins', sans-serif;
+  background: var(--gradient-section);
+  font-family: var(--font-sans);
   position: relative;
   overflow: hidden;
 
   &::before {
     content: '';
     position: absolute;
-    bottom: -50%;
-    right: -50%;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(0, 212, 255, 0.08) 0%, transparent 70%);
-    border-radius: 50%;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 0%, var(--section-wash) 45%, transparent 100%);
     pointer-events: none;
   }
   
@@ -41,7 +35,7 @@
     font-size: 2.5rem;
     font-weight: 700;
     text-align: center;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    background: var(--gradient-brand);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -71,13 +65,13 @@
   }
   
   .experience-card {
-    border-radius: 16px;
+    border-radius: var(--border-radius);
     overflow: hidden;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    background: rgba(17, 24, 39, 0.6);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(0, 212, 255, 0.1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    background: var(--surface-glass);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
     animation: cardSlideIn 0.6s ease-out both;
     position: relative;
 
@@ -88,15 +82,15 @@
       left: 0;
       right: 0;
       height: 3px;
-      background: linear-gradient(90deg, var(--primary), var(--accent), transparent);
+      background: var(--gradient-brand);
       opacity: 0;
       transition: opacity 0.3s ease;
     }
     
     &:hover {
       transform: translateY(-8px) scale(1.02);
-      border-color: rgba(0, 212, 255, 0.3);
-      box-shadow: 0 20px 50px rgba(0, 212, 255, 0.1);
+      border-color: var(--primary-border);
+      box-shadow: var(--shadow-hover);
 
       &::before {
         opacity: 1;
@@ -105,7 +99,7 @@
     
     .card-header {
       padding: 1.8rem;
-      border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+      border-bottom: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -125,13 +119,13 @@
         .company-logo {
           width: 60px;
           height: 60px;
-          border-radius: 12px;
-          background: rgba(0, 212, 255, 0.1);
-          border: 1px solid rgba(0, 212, 255, 0.2);
+          border-radius: var(--border-radius);
+          background: var(--logo-bg);
+          border: 1px solid var(--border);
           display: flex;
           align-items: center;
           justify-content: center;
-          box-shadow: 0 4px 10px rgba(0, 212, 255, 0.05);
+          box-shadow: var(--shadow-sm);
           
           .logo-img {
             width: 80%;
@@ -149,7 +143,7 @@
           }
           
           .position {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            background: var(--gradient-brand);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -165,7 +159,7 @@
         gap: 0.5rem;
         color: var(--text);
         font-weight: 500;
-        background: var(--surface);
+        background: var(--surface-soft);
         padding: 0.5rem 1rem;
         border-radius: 50px;
         
@@ -217,8 +211,8 @@
     
     .card-footer {
       padding: 1.2rem 1.8rem;
-      background: rgba(0, 212, 255, 0.05);
-      border-top: 1px solid rgba(0, 212, 255, 0.1);
+      background: var(--surface-soft);
+      border-top: 1px solid var(--border);
       
       .technologies {
         display: flex;
@@ -227,9 +221,9 @@
         
         .tech-tag {
           padding: 0.5rem 1rem;
-          background: rgba(0, 212, 255, 0.1);
+          background: var(--primary-softer);
           color: var(--primary);
-          border: 1px solid rgba(0, 212, 255, 0.2);
+          border: 1px solid var(--primary-border);
           border-radius: 50px;
           font-size: 0.8rem;
           font-weight: 600;
@@ -237,7 +231,7 @@
 
           &:hover {
             background: var(--primary);
-            color: white;
+            color: var(--on-primary);
             border-color: var(--primary);
           }
         }

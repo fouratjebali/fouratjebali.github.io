@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
 @keyframes slideInLeft {
   from {
     opacity: 0;
@@ -33,20 +31,16 @@
 
 .about-section {
   padding: 6rem 2rem;
-  background: linear-gradient(135deg, var(--section-bg) 0%, rgba(8, 16, 32, 0.8) 100%);
-  font-family: 'Poppins', sans-serif;
+  background: var(--gradient-section);
+  font-family: var(--font-sans);
   position: relative;
   overflow: hidden;
 
   &::before {
     content: '';
     position: absolute;
-    top: -50%;
-    right: -50%;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(0, 212, 255, 0.08) 0%, transparent 70%);
-    border-radius: 50%;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 0%, var(--section-wash) 45%, transparent 100%);
     pointer-events: none;
   }
   
@@ -60,13 +54,12 @@
   .about-content {
     display: flex;
     flex-wrap: wrap;
-    border-radius: 20px;
+    border-radius: var(--border-radius);
     overflow: hidden;
-    background: rgba(17, 24, 39, 0.7);
+    background: var(--surface-glass);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 212, 255, 0.1);
-    box-shadow: 0 20px 60px rgba(0, 212, 255, 0.05), 
-                0 0 40px rgba(128, 0, 255, 0.02);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
     animation: slideInUp 0.8s ease-out;
 
     @media (max-width: 900px) {
@@ -102,7 +95,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3), transparent);
+      background: linear-gradient(to top, var(--overlay-strong), var(--overlay-soft), transparent);
       padding: 3rem 2rem 2rem;
       display: flex;
       justify-content: center;
@@ -118,9 +111,9 @@
           justify-content: center;
           width: 48px;
           height: 48px;
-          border-radius: 12px;
-          background: rgba(0, 212, 255, 0.15);
-          border: 1px solid rgba(0, 212, 255, 0.3);
+          border-radius: var(--border-radius);
+          background: var(--primary-soft);
+          border: 1px solid var(--primary-border);
           color: var(--primary);
           text-decoration: none;
           transition: all 0.3s ease;
@@ -128,10 +121,10 @@
 
           &:hover {
             background: var(--primary);
-            color: var(--bg);
+            color: var(--on-primary);
             border-color: var(--primary);
             transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+            box-shadow: 0 10px 30px var(--glow-primary);
           }
         }
       }
@@ -154,7 +147,7 @@
     .section-title {
       font-size: 1.5rem;
       font-weight: 700;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      background: var(--gradient-brand);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -170,7 +163,7 @@
         left: 0;
         width: 60px;
         height: 3px;
-        background: linear-gradient(90deg, var(--primary), var(--accent));
+        background: var(--gradient-brand);
         border-radius: 2px;
       }
     }
@@ -188,7 +181,7 @@
       }
       
       .highlight {
-        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        background: var(--gradient-brand);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -213,22 +206,22 @@
         align-items: flex-start;
         gap: 1rem;
         padding: 1.2rem;
-        background: rgba(0, 212, 255, 0.05);
-        border: 1px solid rgba(0, 212, 255, 0.1);
-        border-radius: 12px;
+        background: var(--surface-soft);
+        border: 1px solid var(--border);
+        border-radius: var(--border-radius);
         transition: all 0.3s ease;
 
         &:hover {
-          background: rgba(0, 212, 255, 0.1);
-          border-color: rgba(0, 212, 255, 0.3);
+          background: var(--primary-softer);
+          border-color: var(--primary-border);
           transform: translateY(-4px);
         }
         
         .detail-icon {
           width: 45px;
           height: 45px;
-          border-radius: 10px;
-          background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(128, 0, 255, 0.1));
+          border-radius: var(--border-radius);
+          background: var(--primary-soft);
           color: var(--primary);
           display: flex;
           align-items: center;
@@ -275,17 +268,17 @@
           border-radius: 50px;
           font-size: 0.85rem;
           font-weight: 500;
-          background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(128, 0, 255, 0.05));
+          background: var(--primary-softer);
           color: var(--primary);
-          border: 1px solid rgba(0, 212, 255, 0.2);
+          border: 1px solid var(--primary-border);
           transition: all 0.3s ease;
           cursor: pointer;
 
           &:hover {
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(128, 0, 255, 0.1));
+            background: var(--primary-soft);
             border-color: var(--primary);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 212, 255, 0.15);
+            box-shadow: 0 4px 12px var(--glow-primary);
           }
         }
       }
@@ -308,7 +301,7 @@
         border: none;
         cursor: pointer;
         font-size: 1rem;
-        font-family: 'Poppins', sans-serif;
+        font-family: var(--font-sans);
         letter-spacing: 0.3px;
 
         i {
@@ -316,23 +309,23 @@
         }
         
         &.btn-primary {
-          background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-          color: white;
-          box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+          background: var(--gradient-brand);
+          color: var(--on-primary);
+          box-shadow: 0 10px 30px var(--glow-primary);
 
           &:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.3);
+            box-shadow: 0 15px 40px var(--glow-primary);
           }
         }
         
         &.btn-secondary {
           background: transparent;
           color: var(--primary);
-          border: 2px solid rgba(0, 212, 255, 0.3);
+          border: 2px solid var(--primary-border);
 
           &:hover {
-            background: rgba(0, 212, 255, 0.1);
+            background: var(--primary-softer);
             border-color: var(--primary);
             transform: translateY(-3px);
           }

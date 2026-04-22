@@ -1,7 +1,7 @@
 body, :host {
   display: block;
   padding-top: 80px;
-  background: linear-gradient(135deg, var(--bg) 0%, #0d1020 50%, var(--bg) 100%);
+  background: var(--gradient-page);
   background-attachment: fixed;
   position: relative;
 }
