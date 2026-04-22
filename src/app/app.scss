@@ -1,6 +1,9 @@
 body, :host {
   display: block;
-  padding-top: 72px;
+  padding-top: 80px;
+  background: linear-gradient(135deg, var(--bg) 0%, #0d1020 50%, var(--bg) 100%);
+  background-attachment: fixed;
+  position: relative;
 }
 
 

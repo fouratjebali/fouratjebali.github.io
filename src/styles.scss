@@ -1,7 +1,128 @@
 
 @use '@angular/material' as mat;
 
+// ===== ANIMATIONS & KEYFRAMES =====
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(0, 212, 255, 0.3), 0 0 10px rgba(255, 0, 110, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5), 0 0 30px rgba(255, 0, 110, 0.2);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+// ===== ROOT VARIABLES =====
+:root {
+  --bg: #0a0e27;
+  --surface: #111827;
+  --section-bg: #0f1629;
+  --text: #e2e8f0;
+  --text-muted: #a0aec0;
+  --primary: #00d4ff;
+  --primary-hover: #00b8d4;
+  --secondary: #ff006e;
+  --accent: #8000ff;
+  --border: rgba(255, 255, 255, 0.1);
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --border-radius: 12px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// ===== MATERIAL THEME =====
 html {
   @include mat.theme((
     color: (
@@ -13,42 +134,149 @@ html {
   ));
 }
 
-body {
-  color-scheme: light;
-
-  background-color: var(--mat-sys-surface);
-  color: var(--mat-sys-on-surface);
-  font: var(--mat-sys-body-medium);
-
+// ===== BASE STYLES =====
+html, body {
+  height: 100%;
   margin: 0;
+  padding: 0;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: var(--section-bg);
- }
+html {
+  scroll-behavior: smooth;
+}
 
-html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  background: linear-gradient(135deg, var(--bg) 0%, #0d1020 50%, var(--bg) 100%);
+  background-attachment: fixed;
+  color: var(--text);
+  color-scheme: dark;
+  overflow-x: hidden;
+  transition: var(--transition);
 
-
-:root {
-  --bg: #ffffff;
-  --surface: #ffffff;
-  --section-bg: #f8fafc;
-  --text: #334155;
-  --text-muted: #64748b;
-  --primary: #3b82f6;
-  --border: #e2e8f0;
-  --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 0, 110, 0.02) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
 }
 
 body.dark-theme {
-  --bg: #0f172a;
+  --bg: #0a0e27;
   --surface: #111827;
-  --section-bg: #0b1220;
+  --section-bg: #0f1629;
   --text: #e2e8f0;
-  --text-muted: #94a3b8;
-  --primary: #7dd3fc; /* or keep #3b82f6 */
-  --border: #334155;
-  --shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+  --text-muted: #a0aec0;
+  --primary: #00d4ff;
+  --primary-hover: #00b8d4;
+  --border: rgba(255, 255, 255, 0.1);
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+// ===== GLOBAL ELEMENTS =====
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background-color: var(--primary);
+  color: var(--bg);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 5px;
+
+  &:hover {
+    background: var(--primary-hover);
+  }
+}
+
+// ===== TYPOGRAPHY =====
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+p {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+// ===== BUTTONS & LINKS =====
+button, a {
+  &:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: var(--transition);
+
+  &:hover {
+    color: var(--primary-hover);
+  }
+}
+
+// ===== CONTAINERS & SECTIONS =====
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+section {
+  position: relative;
+  z-index: 1;
+}
+
+// ===== UTILITY CLASSES =====
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.fade-in-down {
+  animation: fadeInDown 0.6s ease-out;
+}
+
+.fade-in-left {
+  animation: fadeInLeft 0.6s ease-out;
+}
+
+.fade-in-right {
+  animation: fadeInRight 0.6s ease-out;
+}
+
+.slide-up {
+  animation: slideUp 0.8s ease-out;
+}
+
+.scale-in {
+  animation: scaleIn 0.5s ease-out;
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
 }
