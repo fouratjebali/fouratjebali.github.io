@@ -2,6 +2,7 @@ import { Component, HostListener, inject } from '@angular/core';
 import { Router, RouterLinkActive } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-header',
@@ -21,35 +22,13 @@ export class Header {
 
   private readonly platformId = inject(PLATFORM_ID);
   private readonly isBrowser = isPlatformBrowser(this.platformId);
+  protected readonly themeService = inject(ThemeService);
 
   constructor(private router: Router) {
-    if (this.isBrowser) {
-      this.initializeThemeFromStorage();
-    }
   }
 
-  private initializeThemeFromStorage(): void {
-    try {
-      const stored = typeof localStorage !== 'undefined' ? localStorage.getItem('preferred-theme') : null;
-      if (stored === 'dark') {
-        document.body.classList.add('dark-theme');
-      } else if (stored === 'light') {
-        document.body.classList.remove('dark-theme');
-      }
-    } catch {
-    }
-  }
-
-  private toggleTheme(): void {
-    if (!this.isBrowser) return;
-    const willEnableDark = !document.body.classList.contains('dark-theme');
-    document.body.classList.toggle('dark-theme', willEnableDark);
-    try {
-      if (typeof localStorage !== 'undefined') {
-        localStorage.setItem('preferred-theme', willEnableDark ? 'dark' : 'light');
-      }
-    } catch {
-    }
+  toggleTheme(): void {
+    this.themeService.toggleTheme();
   }
 
   private createRippleOnProfile(): void {

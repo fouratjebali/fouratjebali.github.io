@@ -40,6 +40,9 @@
     </nav>
 
     <div class="header-actions">
+      <button class="theme-toggle" (click)="toggleTheme()" [attr.aria-label]="'Switch to ' + (themeService.currentTheme() === 'dark' ? 'light' : 'dark') + ' mode'">
+        <i [class]="themeService.currentTheme() === 'dark' ? 'fas fa-sun' : 'fas fa-moon'"></i>
+      </button>
       <div class="user-profile">
         <img [src]="currentImage" 
              alt="User profile" 
