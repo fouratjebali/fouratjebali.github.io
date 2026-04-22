@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/app.scss"],
+  "sourcesContent": ["body, :host {\n  display: block;\n  padding-top: 80px;\n  background: var(--gradient-page);\n  background-attachment: fixed;\n  position: relative;\n}\n\r\n\r\n"],
+  "mappings": ";AAAA;AAAA;AACE,WAAA;AACA,eAAA;AACA,cAAA,IAAA;AACA,yBAAA;AACA,YAAA;;",
+  "names": []
+}

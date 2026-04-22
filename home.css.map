@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/components/home/home.scss"],
+  "sourcesContent": ["/* Section spacing and animations */\r\nsection {\r\n  position: relative;\r\n  animation: fadeInUp 0.8s ease-out both;\r\n}\r\n\r\napp-experience, \r\napp-projects, \r\napp-contact, \r\napp-education,\r\napp-about {\r\n  display: block;\r\n  margin-top: 0;\r\n}\r\n\r\n@keyframes fadeInUp {\r\n  from {\r\n    opacity: 0;\r\n    transform: translateY(40px);\r\n  }\r\n  to {\r\n    opacity: 1;\r\n    transform: translateY(0);\r\n  }\r\n}\r\n\r\n\r\n"],
+  "mappings": ";AACA;AACE,YAAA;AACA,aAAA,SAAA,KAAA,SAAA;;AAGF;AAAA;AAAA;AAAA;AAAA;AAKE,WAAA;AACA,cAAA;;AAGF,WAZE;AAaA;AACE,aAAA;AACA,eAAA,WAAA;;AAEF;AACE,aAAA;AACA,eAAA,WAAA;;;",
+  "names": []
+}
